@@ -1,1 +1,132 @@
-/* You can add global styles to this file, and also import other style files */
+//COLORS
+$black: #000000;
+$grey: #6c757a;
+$pink: #ee2c8f;
+$white: #ffffff;
+$lightblack: #212523;
+$darkgrey: #414141;
+$purple: #8441ac;
+
+$colours: 'black' $black, 'grey' $grey, 'pink' $pink, 'white' $white, 'lightblack' $lightblack, 'darkgrey' $darkgrey, 'purple' $purple;
+
+@each $i in $colours {
+  .bg-#{nth($i, 1)} {
+    background: nth($i, 2) !important;
+    background: var(--#{nth($i, 1)}, nth($i, 2));
+  }
+  .b--#{nth($i, 1)} {
+    border-color: nth($i, 2) !important;
+    border-color: var(--#{nth($i, 1)}, nth($i, 2));
+  }
+  .#{nth($i, 1)} {
+    color: nth($i, 2) !important;
+    color: var(--#{nth($i, 1)}, nth($i, 2));
+  }
+  .fill-#{nth($i, 1)} {
+    fill: var(--#{nth($i, 1)}, nth($i, 2));
+    stroke: var(--#{nth($i, 1)}, nth($i, 2));
+  }
+  .only-stroke-#{nth($i, 1)} {
+    fill: none;
+    stroke: var(--#{nth($i, 1)}, nth($i, 2));
+  }
+}
+
+
+//FONTS AND TYPOGRAPHY
+@import url('https://fonts.googleapis.com/css?family=Catamaran&display=swap');
+
+body, input, p, span, div {
+    font-family: 'Catamaran', sans-serif;
+    color: $white;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: normal;
+    transition: .8s opacity ease-in;
+    will-change: transform, opacity;
+}
+
+body {
+  background-color: $purple;
+}
+
+::-webkit-input-placeholder {
+    color: white;
+}
+
+::-moz-placeholder {
+    color: white;
+}
+
+::-ms-placeholder {
+    color: white;
+}
+
+::placeholder {
+    color: white;
+}
+
+.tgy {
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.tgy__subtitle {
+    font-size: 20px;
+    line-height: 24px;
+    @extend .tgy
+}
+
+.tgy__header {
+    font-size: 48px;
+    line-height: 57.6px;    
+}
+
+.tgy__section {
+    font-size: 28px;
+    line-height: 33.6px;
+}
+
+//UTILS
+.h-10 {
+    height: 10%;
+}
+
+// BASE
+.root__container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #8441AC;
+  background-image: linear-gradient(180deg, #8441AC, #9d60c4);
+  overflow: hidden;
+}
+
+.header:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 25vh;
+    z-index: 8;
+    background-image: linear-gradient(to bottom, #8441AC 0%, #8441AC 10%, transparent 100%);
+}
+
+app-chat-wrapper{
+    -ms-overflow-style: none;  // IE 10+
+    scrollbar-width: none;  // Firefox
+    &::-webkit-scrollbar { 
+      display: none;  // Safari and Chrome
+    }
+}
+
+//TACHYONS
+@import "~tachyons-sass/tachyons";

@@ -1,31 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center">
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-      <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    <div class="root__container">
+    
+    <div class="w-100 h-10 header">
+      <span [ngClass]="{'o-0': !displayAnimation}"></span>
+      <app-fundlogo [displayAnimation]="displayAnimation"></app-fundlogo>
     </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
-    <router-outlet></router-outlet>
+
+
+    <div class="flex flex-column w-100 flex-grow-1" [ngClass]="{'o-0': !displayAnimation}">
+      <app-chat-wrapper class="h-75 pb2 flex justify-center overflow-container" id="scrollableDiv"></app-chat-wrapper>
+      <app-chat-input class="h-25"></app-chat-input>
+    </div>
+
+    <footer class="flex h-10 items-end justify-between w-100 ph4" [ngClass]="{'o-0': !displayAnimation}">
+      <span class="db-l db-m db-ns dn">Este projeto é uma iniciativa da <b>Fundação 1bi</b>. Saiba mais sobre a trilha de desenvolvimento: LINK</span>
+      <span class="db-l db-m db-ns dn">Powered by <b>Wavy</b></span>
+    </footer>
+
+    </div>
   `,
   styles: []
 })
-export class AppComponent {
-  title = 'trilha1bi';
+export class AppComponent implements OnInit{
+  title = 'Fundação 1 Bi';
+  displayAnimation = false;
+
+  ngOnInit(){
+    console.log('Animation started');
+    setTimeout(() => {
+      this.displayAnimation = true;
+      console.log('Animation ended');
+    }, 3000);
+  }
 }
